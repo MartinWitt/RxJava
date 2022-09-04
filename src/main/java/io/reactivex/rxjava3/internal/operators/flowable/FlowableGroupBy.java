@@ -47,8 +47,7 @@ public final class FlowableGroupBy<T, K, V> extends AbstractFlowableWithUpstream
     }
 
     @Override
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected void subscribeActual(Subscriber<? super GroupedFlowable<K, V>> s) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })void subscribeActual(Subscriber<? super GroupedFlowable<K, V>> s) {
 
         final Map<Object, GroupedUnicast<K, V>> groups;
         final Queue<GroupedUnicast<K, V>> evictedGroups;
@@ -331,13 +330,12 @@ public final class FlowableGroupBy<T, K, V> extends AbstractFlowableWithUpstream
             return new GroupedUnicast<>(key, state);
         }
 
-        protected GroupedUnicast(K key, State<T, K> state) {
+        GroupedUnicast(K key, State<T, K> state) {
             super(key);
             this.state = state;
         }
 
-        @Override
-        protected void subscribeActual(Subscriber<? super T> s) {
+        @Overridevoid subscribeActual(Subscriber<? super T> s) {
             state.subscribe(s);
         }
 
