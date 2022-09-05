@@ -48,19 +48,17 @@ public final class FlowableGroupBy<T, K, V> extends AbstractFlowableWithUpstream
 
     @Override
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected void subscribeActual(Subscriber<? super GroupedFlowable<K, V>> s) {
-
+    void subscribeActual(Subscriber<? super GroupedFlowable<K, V>> s) {
         final Map<Object, GroupedUnicast<K, V>> groups;
         final Queue<GroupedUnicast<K, V>> evictedGroups;
-
         try {
             if (mapFactory == null) {
                 evictedGroups = null;
                 groups = new ConcurrentHashMap<>();
             } else {
                 evictedGroups = new ConcurrentLinkedQueue<>();
-                Consumer<Object> evictionAction = (Consumer) new EvictionAction<>(evictedGroups);
-                groups = (Map) mapFactory.apply(evictionAction);
+                Consumer<Object> evictionAction = ((Consumer) (new EvictionAction<>(evictedGroups)));
+                groups = ((Map) (mapFactory.apply(evictionAction)));
             }
         } catch (Throwable e) {
             Exceptions.throwIfFatal(e);
@@ -68,8 +66,7 @@ public final class FlowableGroupBy<T, K, V> extends AbstractFlowableWithUpstream
             s.onError(e);
             return;
         }
-        GroupBySubscriber<T, K, V> subscriber =
-                new GroupBySubscriber<>(s, keySelector, valueSelector, bufferSize, delayError, groups, evictedGroups);
+        GroupBySubscriber<T, K, V> subscriber = new GroupBySubscriber<>(s, keySelector, valueSelector, bufferSize, delayError, groups, evictedGroups);
         source.subscribe(subscriber);
     }
 
@@ -331,15 +328,15 @@ public final class FlowableGroupBy<T, K, V> extends AbstractFlowableWithUpstream
             return new GroupedUnicast<>(key, state);
         }
 
-        protected GroupedUnicast(K key, State<T, K> state) {
-            super(key);
-            this.state = state;
-        }
+                GroupedUnicast(K key, State<T, K> state) {
+                    super(key);
+                    this.state = state;
+                }
 
-        @Override
-        protected void subscribeActual(Subscriber<? super T> s) {
-            state.subscribe(s);
-        }
+                @Override
+                void subscribeActual(Subscriber<? super T> s) {
+                    state.subscribe(s);
+                }
 
         public void onNext(T t) {
             state.onNext(t);
