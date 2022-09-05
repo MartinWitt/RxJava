@@ -195,13 +195,14 @@ public final class ObservableGroupBy<T, K, V> extends AbstractObservableWithUpst
             return new GroupedUnicast<>(key, state);
         }
 
-        protected GroupedUnicast(K key, State<T, K> state) {
+        
+            non-sealedGroupedUnicast(K key, State<T, K> state) {
             super(key);
             this.state = state;
         }
 
         @Override
-        protected void subscribeActual(Observer<? super T> observer) {
+            void subscribeActual(Observer<? super T> observer) {
             state.subscribe(observer);
         }
 
