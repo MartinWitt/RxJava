@@ -46,7 +46,7 @@ public abstract class BasicFuseableObserver<T, R> implements Observer<T>, QueueD
      * Construct a BasicFuseableObserver by wrapping the given subscriber.
      * @param downstream the subscriber, not null (not verified)
      */
-    public BasicFuseableObserver(Observer<? super R> downstream) {
+    protected BasicFuseableObserver(Observer<? super R> downstream) {
         this.downstream = downstream;
     }
 
