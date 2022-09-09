@@ -35,7 +35,7 @@ implements Observer<T> {
      * Creates a DeferredScalarObserver instance and wraps a downstream Observer.
      * @param downstream the downstream subscriber, not null (not verified)
      */
-    public DeferredScalarObserver(Observer<? super R> downstream) {
+    protected DeferredScalarObserver(Observer<? super R> downstream) {
         super(downstream);
     }
 
