@@ -47,7 +47,7 @@ public abstract class BasicFuseableConditionalSubscriber<T, R> implements Condit
      * Construct a BasicFuseableSubscriber by wrapping the given subscriber.
      * @param downstream the subscriber, not null (not verified)
      */
-    public BasicFuseableConditionalSubscriber(ConditionalSubscriber<? super R> downstream) {
+    protected BasicFuseableConditionalSubscriber(ConditionalSubscriber<? super R> downstream) {
         this.downstream = downstream;
     }
 
