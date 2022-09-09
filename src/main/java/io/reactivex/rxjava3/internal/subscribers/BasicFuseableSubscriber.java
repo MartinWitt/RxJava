@@ -47,7 +47,7 @@ public abstract class BasicFuseableSubscriber<T, R> implements FlowableSubscribe
      * Construct a BasicFuseableSubscriber by wrapping the given subscriber.
      * @param downstream the subscriber, not null (not verified)
      */
-    public BasicFuseableSubscriber(Subscriber<? super R> downstream) {
+    protected BasicFuseableSubscriber(Subscriber<? super R> downstream) {
         this.downstream = downstream;
     }
 
