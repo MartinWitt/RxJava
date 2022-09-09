@@ -29,7 +29,7 @@ implements Observer<T>, Disposable {
 
     volatile boolean cancelled;
 
-    public BlockingBaseObserver() {
+    protected BlockingBaseObserver() {
         super(1);
     }
 
