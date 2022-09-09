@@ -53,7 +53,7 @@ implements FlowableSubscriber<T> {
 
     boolean syncFused;
 
-    public ConcatMapXMainSubscriber(int prefetch, ErrorMode errorMode) {
+    protected ConcatMapXMainSubscriber(int prefetch, ErrorMode errorMode) {
         this.errorMode = errorMode;
         this.errors = new AtomicThrowable();
         this.prefetch = prefetch;
