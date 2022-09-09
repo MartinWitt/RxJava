@@ -31,7 +31,7 @@ implements FlowableSubscriber<T> {
 
     volatile boolean cancelled;
 
-    public BlockingBaseSubscriber() {
+    protected BlockingBaseSubscriber() {
         super(1);
     }
 
