@@ -49,7 +49,7 @@ implements Observer<T>, Disposable {
 
     volatile boolean disposed;
 
-    public ConcatMapXMainObserver(int prefetch, ErrorMode errorMode) {
+    protected ConcatMapXMainObserver(int prefetch, ErrorMode errorMode) {
         this.errorMode = errorMode;
         this.errors = new AtomicThrowable();
         this.prefetch = prefetch;
