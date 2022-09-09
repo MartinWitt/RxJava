@@ -48,7 +48,7 @@ public abstract class SinglePostCompleteSubscriber<T, R> extends AtomicLong impl
     /** Masks out the lower 63 bit holding the current request amount. */
     static final long REQUEST_MASK = Long.MAX_VALUE;
 
-    public SinglePostCompleteSubscriber(Subscriber<? super R> downstream) {
+    protected SinglePostCompleteSubscriber(Subscriber<? super R> downstream) {
         this.downstream = downstream;
     }
 
