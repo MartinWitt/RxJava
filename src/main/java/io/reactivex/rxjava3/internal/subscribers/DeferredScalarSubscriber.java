@@ -39,7 +39,7 @@ implements FlowableSubscriber<T> {
      * Creates a DeferredScalarSubscriber instance and wraps a downstream Subscriber.
      * @param downstream the downstream subscriber, not null (not verified)
      */
-    public DeferredScalarSubscriber(Subscriber<? super R> downstream) {
+    protected DeferredScalarSubscriber(Subscriber<? super R> downstream) {
         super(downstream);
     }
 
